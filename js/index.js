@@ -2,8 +2,6 @@
 import { ENCODING } from './js/config';
 import { CONTENT_HTML } from './js/config';
 import { CONTENT_JSON } from './js/config';
-import { STATUS_NOT_FOUND } from './js/config';
-import { STATUS_OK } from './js/config';
 
 const fs = require('fs');
 const http = require('http');
@@ -43,16 +41,13 @@ const server = http.createServer((req, res) => {
       if (err) return alert('Could not read file');
       const productData = JSON.parse(data);
       //   console.log(productData);
-      res.writeHead(STATUS_OK, { 'Content-type': 'application/json' });
+      res.writeHead(200, CONTENT_JSON);
       res.end(data);
     });
   }
   // Page not found
   else {
-    res.writeHead(STATUS_NOT_FOUND, {
-      'Content-type': 'text/html',
-      'my-own-header': 'hello-world',
-    });
+    res.writeHead(404, CONTENT_HTML);
   }
 });
 
