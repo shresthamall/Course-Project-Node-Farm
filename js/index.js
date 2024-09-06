@@ -1,13 +1,16 @@
 // import fs from 'fs';
+import * as fs from 'fs';
+import * as http from 'http';
+import * as _url from 'url';
+import slugify from 'slugify';
 import { ENCODING } from './config.js';
 import { CONTENT_HTML } from './config.js';
 import { CONTENT_JSON } from './config.js';
 import { STATUS_NOT_FOUND } from './config.js';
 import { STATUS_OK } from './config.js';
-import * as fs from 'fs';
-import * as http from 'http';
-import * as _url from 'url';
 import { __dirname } from './config.js';
+
+console.log(slugify('Fresh Avocados', { lower: true }));
 
 // HTML templates
 const templateOverview = fs.readFileSync(
